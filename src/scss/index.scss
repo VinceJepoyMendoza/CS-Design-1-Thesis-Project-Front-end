@@ -16,6 +16,21 @@ body {
   width: 45%;
 }
 
+.main-title {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75px;
+    height: 3px;
+    background-color: $primary;
+  }
+}
+
 // Break points
 @include media-breakpoint-down(lg) {
   .login-form {

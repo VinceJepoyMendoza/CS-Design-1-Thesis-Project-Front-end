@@ -41,8 +41,9 @@ const App = () => {
           element={!info.fname ? <Login /> : <Navigate to='/welcome' />}
         />
         <Route path='/about' element={<About />} />
-        <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/*' element={<NotFound />} />
+        <Route path='/dashboard/*' element={<Dashboard />} />
+        <Route path='/*' element={<Navigate to='/page-not-found' />} />
+        <Route path='/page-not-found' element={<NotFound />} />
       </Routes>
     </Router>
   );

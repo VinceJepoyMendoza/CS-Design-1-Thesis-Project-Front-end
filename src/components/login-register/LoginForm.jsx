@@ -1,9 +1,11 @@
 import React from 'react';
-import { Form, Button, Spinner } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { attemptLogin } from '../../store/actions/userActions';
 import PopupMessage from '../general/PopupMessage';
+import Loader from '../general/Loader';
+import Title from '../general/Title';
 
 const LoginAccount = () => {
   const dispatch = useDispatch();
@@ -23,6 +25,7 @@ const LoginAccount = () => {
       className='bg-secondary p-4 p-lg-5 login-form d-flex flex-column gap-4'
       onSubmit={submit}
     >
+      <Title text='Login account' />
       <Form.Group controlId='formBasicEmail'>
         <Form.Label>Email address</Form.Label>
         <Form.Control type='email' placeholder='Enter email' size='lg' />
@@ -33,7 +36,7 @@ const LoginAccount = () => {
       </Form.Group>
       <footer className='d-flex flex-column gap-4 text-center'>
         <Button variant='primary' type='submit' size='lg' className='w-100'>
-          {isLoading ? <Spinner animation='border' variant='light' /> : 'Login'}
+          {isLoading ? <Loader /> : 'Login'}
         </Button>
         <small>
           Don't have an account?{' '}

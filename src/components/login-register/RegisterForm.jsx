@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
-import { Form, Button, Spinner } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { registerNewUser } from '../../store/actions/userActions';
 import PopupMessage from '../general/PopupMessage';
+import Loader from '../general/Loader';
+import Title from '../general/Title';
 
 const RegisterForm = () => {
   const { isLoading, popupMessage } = useSelector((state) => state.general);
@@ -31,9 +32,10 @@ const RegisterForm = () => {
 
   return (
     <Form
-      className='bg-secondary p-4 p-lg-5 login-form d-flex flex-column gap-2 mt-3'
+      className='bg-secondary p-4 p-lg-5 login-form d-flex flex-column gap-2'
       onSubmit={submitHandler}
     >
+      <Title text='Create new Account' />
       <Form.Group>
         <Form.Label>First name</Form.Label>
         <span className='text-danger '>*</span>
@@ -73,11 +75,7 @@ const RegisterForm = () => {
       </Form.Group>
       <footer className='d-flex flex-column gap-4 text-center mt-2'>
         <Button variant='primary' type='submit' size='lg' className='w-100'>
-          {isLoading ? (
-            <Spinner animation='border' variant='light' />
-          ) : (
-            'Register'
-          )}
+          {isLoading ? <Loader /> : 'Register'}
         </Button>
         <small>
           Already have an account? <Link to='/authenticate/login'>Login</Link>{' '}

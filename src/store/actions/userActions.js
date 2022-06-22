@@ -2,14 +2,14 @@ import axios from 'axios';
 import { userActions } from '../reducers/userSlice';
 import { generalActions } from '../reducers/generalSlice';
 
-const urlOrigin = 'http://localhost:5000';
+export const urlOrigin = 'http://localhost:5000';
 const token = localStorage.getItem('SPGBMToken');
 
 // popup message template
 const showPoppup = (type, message) =>
   generalActions.setPopupMessage({ show: true, type: type, message: message });
 
-const authAxios = axios.create({
+export const authAxios = axios.create({
   baseURL: urlOrigin,
   headers: {
     authorization: `Bearer ${token}`,
