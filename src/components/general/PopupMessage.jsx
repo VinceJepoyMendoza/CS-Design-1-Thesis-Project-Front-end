@@ -4,7 +4,7 @@ import { generalActions } from '../../store/reducers/generalSlice';
 
 import { Alert } from 'react-bootstrap';
 
-const PopupMessage = ({ show, type, message }) => {
+const PopupMessage = ({ show, type, message, className }) => {
   let customMessage = null;
   const dispatch = useDispatch();
   const popup = useSelector((state) => state.general.popupMessage);
@@ -33,7 +33,7 @@ const PopupMessage = ({ show, type, message }) => {
     <Alert
       variant={type}
       style={{ display: show ? 'block' : 'none' }}
-      className='text-center'
+      className={`text-center ${className && className}`}
     >
       {typeof message === 'object' ? customMessage : message}
     </Alert>

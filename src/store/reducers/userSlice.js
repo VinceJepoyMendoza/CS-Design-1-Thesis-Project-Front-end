@@ -3,12 +3,33 @@ import { createSlice } from '@reduxjs/toolkit';
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    info: {},
+    info: {
+      fname: '',
+      mname: '',
+      lname: '',
+      contact: '',
+      email: '',
+    },
     experiment: '',
   },
   reducers: {
     setUserInfo(state, action) {
       state.info = action.payload;
+    },
+    setUserFname(state, action) {
+      state.info.fname = action.payload;
+    },
+    setUserMname(state, action) {
+      state.info.mname = action.payload;
+    },
+    setUserLname(state, action) {
+      state.info.lname = action.payload;
+    },
+    setUserContact(state, action) {
+      state.info.contact = action.payload;
+    },
+    setUserEmail(state, action) {
+      state.info.email = action.payload;
     },
   },
 });

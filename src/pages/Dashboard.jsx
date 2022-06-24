@@ -7,7 +7,7 @@ import AccountSettings from '../components/dashboard/AccountSettings';
 
 const Dashboard = () => {
   return (
-    <Container fluid='md' as='section' className='py-5'>
+    <Container fluid='md' as='section' className='py-4'>
       <Routes>
         <Route path='/products' element={<Products />} />
         <Route path='/account-settings' element={<AccountSettings />} />

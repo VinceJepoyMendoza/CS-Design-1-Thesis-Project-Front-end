@@ -19,7 +19,6 @@ export const fetchUserProducts = (id) => async (dispatch) => {
       dispatch(setIsLoading(false));
     })
     .catch((err) => {
-      console.log(err.response);
       // Stop Loading
       dispatch(setIsLoading(false));
     });

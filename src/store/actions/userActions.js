@@ -41,11 +41,11 @@ export const attemptLogin = (candidate) => async (dispatch) => {
       // Clear token in local storage
       localStorage.setItem('SPGBMToken', '');
 
-      // Stop loading
-      dispatch(setIsLoading(false));
-
       // Show alert message
       dispatch(showPoppup('danger', err.response.data.message));
+
+      // Stop loading
+      dispatch(setIsLoading(false));
     });
 };
 
@@ -57,11 +57,11 @@ export const fetchUserInfo = () => async (dispatch) => {
   authAxios
     .get(`${urlOrigin}/user/current-user`)
     .then((resp) => {
-      // Stop loading
-      dispatch(setIsLoading(false));
-
       // Set current user's info
       dispatch(userActions.setUserInfo(resp.data.user));
+
+      // Stop loading
+      dispatch(setIsLoading(false));
     })
     .catch((err) => {
       // Stop loading
@@ -77,14 +77,14 @@ export const registerNewUser = (register, clearInputs) => async (dispatch) => {
   await axios
     .post(`${urlOrigin}/auth/register`, register)
     .then((resp) => {
-      // Stop loading
-      dispatch(setIsLoading(false));
-
       // Clear inputs
       clearInputs();
 
       // show success message
       dispatch(showPoppup('success', resp.data.message));
+
+      // Stop loading
+      dispatch(setIsLoading(false));
     })
     .catch((err) => {
       // More than 1 input error
@@ -96,6 +96,60 @@ export const registerNewUser = (register, clearInputs) => async (dispatch) => {
         : dispatch(showPoppup('danger', err.response.data));
 
       // Stop loading
+      dispatch(setIsLoading(false));
+    });
+};
+
+// Update user
+export const updateUserInfo =
+  (id, infos, setIsEditing, setconfirmPassword) => (dispatch) => {
+    // Start loading
+    dispatch(setIsLoading(true));
+
+    authAxios
+      .patch(`${urlOrigin}/user/${id}`, infos)
+      .then((resp) => {
+        // Stop editing
+        setIsEditing(false);
+
+        // Clear confirm password field
+        setconfirmPassword('');
+
+        dispatch(showPoppup('success', resp.data.message));
+
+        dispatch(setIsLoading(false));
+      })
+      .catch((err) => {
+        // More than 1 input error
+        const inputs = err.response.data.inputs;
+
+        // show error message
+        !inputs
+          ? dispatch(showPoppup('danger', err.response.data.message))
+          : dispatch(showPoppup('danger', err.response.data));
+
+        dispatch(setIsLoading(false));
+      });
+  };
+
+export const deleteUser = (id, confirmPassword) => (dispatch) => {
+  // Start Loading
+  dispatch(setIsLoading(true));
+
+  authAxios
+    .delete(`${urlOrigin}/user/${id}`, { data: { confirmPassword } })
+    .then((resp) => {
+      dispatch(showPoppup('success', resp.data.message));
+
+      window.location.reload();
+
+      // Stop Loading
+      dispatch(setIsLoading(false));
+    })
+    .catch((err) => {
+      dispatch(showPoppup('danger', err.response.data.message));
+
+      // Stop Loading
       dispatch(setIsLoading(false));
     });
 };
