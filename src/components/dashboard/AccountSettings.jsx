@@ -45,7 +45,7 @@ const AccountSettings = () => {
     dispatch(updateUserInfo(_id, infos, setIsEditing, setconfirmPassword));
   };
 
-  return fname ? (
+  return _id ? (
     <Form
       className='bg-secondary p-4 p-lg-5 login-form d-flex flex-column gap-2 mx-auto'
       onSubmit={submitHandler}
@@ -117,18 +117,20 @@ const AccountSettings = () => {
           disabled={isLoading || !isEditing}
         />
       </Form.Group>
-      <Form.Group>
-        <Form.Label>Confirm password</Form.Label>
-        <span className='text-danger '>*</span>
-        <Form.Control
-          type='password'
-          placeholder='Confirm Password'
-          size='lg'
-          disabled={isLoading || !isEditing}
-          value={confirmPassword}
-          onChange={(e) => setconfirmPassword(e.target.value)}
-        />
-      </Form.Group>
+      {isEditing && (
+        <Form.Group>
+          <Form.Label>Confirm password</Form.Label>
+          <span className='text-danger '>*</span>
+          <Form.Control
+            type='password'
+            placeholder='Confirm Password'
+            size='lg'
+            disabled={isLoading || !isEditing}
+            value={confirmPassword}
+            onChange={(e) => setconfirmPassword(e.target.value)}
+          />
+        </Form.Group>
+      )}
       <footer className='d-flex flex-column gap-4 text-center mt-2'>
         <Button
           variant={isEditing ? 'danger' : 'primary'}

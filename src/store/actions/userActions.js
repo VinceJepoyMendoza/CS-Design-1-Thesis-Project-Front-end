@@ -6,7 +6,7 @@ export const urlOrigin = 'http://localhost:5000';
 const token = localStorage.getItem('SPGBMToken');
 
 // popup message template
-const showPoppup = (type, message) =>
+export const showPoppup = (type, message) =>
   generalActions.setPopupMessage({ show: true, type: type, message: message });
 
 export const authAxios = axios.create({

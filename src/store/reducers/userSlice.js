@@ -10,7 +10,6 @@ const userSlice = createSlice({
       contact: '',
       email: '',
     },
-    experiment: '',
   },
   reducers: {
     setUserInfo(state, action) {

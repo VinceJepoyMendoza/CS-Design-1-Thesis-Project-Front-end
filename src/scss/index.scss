@@ -31,9 +31,26 @@ body {
   }
 }
 
+.products-header {
+  div {
+    width: 75%;
+  }
+}
+
 // Break points
 @include media-breakpoint-down(lg) {
   .login-form {
     width: 85%;
+  }
+
+  .products-header {
+    div {
+      width: 100%;
+    }
+    margin-bottom: 10px;
+  }
+
+  .product-create {
+    width: 100% !important;
   }
 }
