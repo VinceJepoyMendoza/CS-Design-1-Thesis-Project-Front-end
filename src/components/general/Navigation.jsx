@@ -29,15 +29,20 @@ const Navigation = () => {
               <Nav.Link href='/welcome'>Home</Nav.Link>
               <Nav.Link href='/authenticate/login'>Login</Nav.Link>
               <Nav.Link href='/authenticate/register'>Register</Nav.Link>
+              <Nav.Link href='/contact'>Contact</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         ) : (
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
               <Nav.Link href='/dashboard/products'>Products</Nav.Link>
+              {info.role === 'admin' && (
+                <Nav.Link href='/dashboard/users'>Users</Nav.Link>
+              )}
               <Nav.Link href='/dashboard/account-settings'>
                 Account Settings
               </Nav.Link>
+              <Nav.Link href='/contact'>Contact</Nav.Link>
               <Nav.Link
                 href='/welcome'
                 onClick={() => {

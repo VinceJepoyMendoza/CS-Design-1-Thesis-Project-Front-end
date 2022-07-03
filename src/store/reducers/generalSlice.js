@@ -12,7 +12,6 @@ const generalSlice = createSlice({
     },
     setPopupMessage(state, action) {
       state.popupMessage = action.payload;
-      // const timeout = setTimeout(() => this.setPopupMessage(), 3000)
     },
   },
 });

@@ -10,6 +10,7 @@ const userSlice = createSlice({
       contact: '',
       email: '',
     },
+    userList: [],
   },
   reducers: {
     setUserInfo(state, action) {
@@ -29,6 +30,9 @@ const userSlice = createSlice({
     },
     setUserEmail(state, action) {
       state.info.email = action.payload;
+    },
+    setUsers(state, action) {
+      state.userList = action.payload;
     },
   },
 });

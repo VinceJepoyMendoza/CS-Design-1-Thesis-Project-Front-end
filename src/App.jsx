@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Navigation from './components/general/Navigation';
+import Contact from './pages/Contact';
 import NotFound from './components/general/NotFound';
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
         />
         <Route path='/dashboard/*' element={<Dashboard />} />
         <Route path='/*' element={<Navigate to='/page-not-found' />} />
+        <Route path='/contact' element={<Contact />} />
         <Route path='/page-not-found' element={<NotFound />} />
       </Routes>
     </Router>

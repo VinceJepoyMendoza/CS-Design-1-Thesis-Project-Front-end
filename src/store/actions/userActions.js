@@ -132,6 +132,7 @@ export const updateUserInfo =
       });
   };
 
+// Delete user/account
 export const deleteUser = (id, confirmPassword) => (dispatch) => {
   // Start Loading
   dispatch(setIsLoading(true));
@@ -150,6 +151,52 @@ export const deleteUser = (id, confirmPassword) => (dispatch) => {
       dispatch(showPoppup('danger', err.response.data.message));
 
       // Stop Loading
+      dispatch(setIsLoading(false));
+    });
+};
+
+// fetch all users - for admins only
+export const fetchUsers = () => async (dispatch) => {
+  // Start loading
+  dispatch(setIsLoading(true));
+
+  authAxios
+    .get(`${urlOrigin}/user`)
+    .then((resp) => {
+      // Set users list
+      dispatch(userActions.setUsers(resp.data));
+
+      // dispatch(userActions.setUserInfo(resp.data.user));
+
+      // Stop loading
+      dispatch(setIsLoading(false));
+    })
+    .catch((err) => {
+      // Stop loading
+      dispatch(setIsLoading(false));
+    });
+};
+
+// Promote/Demote user
+export const updateRole = (id, role, setModalInfo) => (dispatch) => {
+  // Start loading
+  dispatch(setIsLoading(true));
+
+  authAxios
+    .patch(`${urlOrigin}/user/update-role/${id}`, { role })
+    .then((resp) => {
+      dispatch(fetchUsers());
+
+      setModalInfo({ isDone: true, show: true });
+
+      dispatch(showPoppup('success', resp.data.message));
+
+      dispatch(setIsLoading(false));
+    })
+    .catch((err) => {
+      console.log(err.response.data);
+      dispatch(showPoppup('danger', err.response.data.message));
+
       dispatch(setIsLoading(false));
     });
 };

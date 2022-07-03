@@ -70,6 +70,19 @@ body {
   padding: 2px;
 }
 
+.contact-form {
+  min-height: calc(100vh - 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  form {
+    width: 60%;
+    border-radius: 5px;
+  }
+}
+
 // Break points
 @include media-breakpoint-down(lg) {
   .login-form {
@@ -85,5 +98,9 @@ body {
 
   .product-create {
     width: 100% !important;
+  }
+
+  .contact-form form {
+    width: 90%;
   }
 }
