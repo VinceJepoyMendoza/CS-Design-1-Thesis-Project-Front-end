@@ -32,72 +32,88 @@ const Products = () => {
     setCurrProducts(products);
   }, [products]);
 
-  return products.length ? (
+  return (
     <>
-      <Title text='Products' />
-      <ProductsHeader
-        products={products}
-        setCurrProducts={setCurrProducts}
-        setprodConfig={setprodConfig}
-        show={prodConfig.show}
-      />
       <ProductConfig
         show={prodConfig.show}
         action={prodConfig.action}
         productId={prodConfig.productId}
         setprodConfig={setprodConfig}
       />
-      <Table striped borderless hover variant='dark'>
-        <thead className='text-center'>
-          <tr>
-            <th>Stock</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Size</th>
-            <th>Color</th>
-            <th>Flavor</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currProducts.map((product, index) => (
-            <Product
-              key={index}
-              product={product}
-              setCurrProd={setCurrProd}
-              setShowModal={setShowDelModal}
-              setprodConfig={setprodConfig}
-            />
-          ))}
-        </tbody>
-      </Table>
-      {/* Popup modal for deletion */}
-      <Modal show={showDelModal} onHide={() => setShowDelModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Delete Product</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          Are you sure you want to delete {currProd.name}?
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant='secondary' onClick={() => setShowDelModal(false)}>
-            Close
-          </Button>
+      {products.length ? (
+        <>
+          <Title text='Products' />
+          <ProductsHeader
+            products={products}
+            setCurrProducts={setCurrProducts}
+            setprodConfig={setprodConfig}
+            show={prodConfig.show}
+          />
+          <Table striped borderless hover variant='dark'>
+            <thead className='text-center'>
+              <tr>
+                <th>Stock</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Size</th>
+                <th>Color</th>
+                <th>Flavor</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currProducts.map((product, index) => (
+                <Product
+                  key={index}
+                  product={product}
+                  setCurrProd={setCurrProd}
+                  setShowModal={setShowDelModal}
+                  setprodConfig={setprodConfig}
+                />
+              ))}
+            </tbody>
+          </Table>
+          {/* Popup modal for deletion */}
+          <Modal show={showDelModal} onHide={() => setShowDelModal(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title>Delete Product</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Are you sure you want to delete {currProd.name}?
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                variant='secondary'
+                onClick={() => setShowDelModal(false)}
+              >
+                Close
+              </Button>
+              <Button
+                variant='primary'
+                onClick={() => {
+                  dispatch(deleteProduct(currProd.id, userInfo._id));
+                  setShowDelModal(false);
+                }}
+              >
+                Delete
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </>
+      ) : (
+        <>
+          <h1 className='text-center'>You currently don't have any products</h1>
           <Button
-            variant='primary'
-            onClick={() => {
-              dispatch(deleteProduct(currProd.id, userInfo._id));
-              setShowDelModal(false);
-            }}
+            size='lg'
+            className='d-block mx-auto my-5'
+            onClick={() => setprodConfig({ show: true, action: 'create' })}
           >
-            Delete
+            Add product
           </Button>
-        </Modal.Footer>
-      </Modal>
+        </>
+      )}
     </>
-  ) : (
-    <h1 className='text-center'>You currently don't have any products</h1>
   );
 };
 

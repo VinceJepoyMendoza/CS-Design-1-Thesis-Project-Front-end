@@ -37,6 +37,39 @@ body {
   }
 }
 
+.main-home {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+
+  h1 {
+    font-size: 4rem;
+    z-index: 10;
+    margin-bottom: 2rem;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+    object-fit: fill;
+  }
+}
+
+.sale-delete {
+  position: absolute;
+  top: 1rem;
+  right: 1.8rem;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  padding: 2px;
+}
+
 // Break points
 @include media-breakpoint-down(lg) {
   .login-form {

@@ -10,7 +10,6 @@ import { fetchUserInfo } from './store/actions/userActions';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
-import About from './pages/About';
 import Dashboard from './pages/Dashboard';
 import Navigation from './components/general/Navigation';
 import NotFound from './components/general/NotFound';
@@ -40,7 +39,6 @@ const App = () => {
           path='/authenticate/register'
           element={!info.fname ? <Login /> : <Navigate to='/welcome' />}
         />
-        <Route path='/about' element={<About />} />
         <Route path='/dashboard/*' element={<Dashboard />} />
         <Route path='/*' element={<Navigate to='/page-not-found' />} />
         <Route path='/page-not-found' element={<NotFound />} />
