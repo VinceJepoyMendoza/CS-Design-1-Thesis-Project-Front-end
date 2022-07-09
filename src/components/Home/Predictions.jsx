@@ -5,8 +5,8 @@ const Predictions = ({ predictAttr }) => {
   return (
     <Row as='form' className='border border-dark mb-2'>
       <Col className='p-3'>
-        <Form.Label>Interval</Form.Label>
-        <Form.Control type='number' min='0' placeholder='interval' />
+        <Form.Label>Date</Form.Label>
+        <Form.Control type='month' min='0' placeholder='month number' />
       </Col>
       <Col className='p-3'>
         <Form.Label>stock</Form.Label>

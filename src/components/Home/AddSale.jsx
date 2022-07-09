@@ -24,8 +24,8 @@ const AddSale = ({
       </h4>
       <Col>
         <Form.Group className='p-3'>
-          <Form.Label>Interval</Form.Label>
-          <Form.Control type='number' min='0' placeholder='interval' />
+          <Form.Label>Date</Form.Label>
+          <Form.Control type='month' min='0' placeholder='month number' />
         </Form.Group>
       </Col>
       <Col>
