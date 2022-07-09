@@ -64,6 +64,9 @@ export const fetchUserInfo = () => async (dispatch) => {
       dispatch(setIsLoading(false));
     })
     .catch((err) => {
+      // Removed token if expired
+      localStorage.setItem('SPGBMToken', '');
+
       // Stop loading
       dispatch(setIsLoading(false));
     });
