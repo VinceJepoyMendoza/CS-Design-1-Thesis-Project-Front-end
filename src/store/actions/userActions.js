@@ -2,7 +2,7 @@ import axios from 'axios';
 import { userActions } from '../reducers/userSlice';
 import { generalActions } from '../reducers/generalSlice';
 
-export const urlOrigin = 'http://localhost:5000';
+export const urlOrigin = 'https://sale-prediction-gradient-boost.herokuapp.com';
 const token = localStorage.getItem('SPGBMToken');
 
 // popup message template
