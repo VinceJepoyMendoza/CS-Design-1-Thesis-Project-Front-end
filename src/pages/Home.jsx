@@ -92,6 +92,8 @@ const Home = () => {
               Instructions:
               <ul>
                 <li>Only accept csv files.</li>
+                <li>File max size of 2mb.</li>
+
                 <li>
                   Make sure your file has the following columns:
                   <ul>

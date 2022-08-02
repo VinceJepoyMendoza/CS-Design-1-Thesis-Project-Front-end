@@ -8,7 +8,7 @@ const PredictOutput = ({ predictOutput, handleClose }) => {
     <Modal show={show} onHide={handleClose}>
       <Modal.Header
         closeButton
-        className={`bg-${data.data?.success ? 'light' : 'danger'} text-white`}
+        className={`bg-${data.data?.success ? 'light' : 'danger text-white'} `}
       >
         <Modal.Title>
           {data.data?.success ? 'Prediction successful' : 'Prediction failed'}
