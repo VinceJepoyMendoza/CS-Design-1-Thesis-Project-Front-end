@@ -18,7 +18,7 @@ const PredictOutput = ({ predictOutput, handleClose }) => {
         <Modal.Body className='text-center d-flex gap-4 flex-column'>
           <h5>Gradient Boost predicted your sale to be</h5>
           <h3>{data.data.data.toFixed(2)}</h3>
-          <small className='text-muted'>error: {data.data.error}%</small>
+          <small className='text-muted'>score: {data.data.error}</small>
         </Modal.Body>
       ) : (
         <Modal.Body className='text-center d-flex gap-4 flex-column'>
