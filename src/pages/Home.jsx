@@ -99,7 +99,6 @@ const Home = () => {
                   <ul>
                     <li>Order_Date</li>
                     <li>Location</li>
-                    <li>Category</li>
                     <li>Product</li>
                     <li>Quantity</li>
                     <li>Price</li>
