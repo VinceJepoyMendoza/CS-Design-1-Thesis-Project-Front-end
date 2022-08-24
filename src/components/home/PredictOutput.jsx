@@ -4,6 +4,9 @@ import { Modal, Button } from 'react-bootstrap';
 const PredictOutput = ({ predictOutput, handleClose }) => {
   const { show, data } = predictOutput;
 
+  // retrieving the first two decimal for error - 7.123 => 12
+  const error = (data.data?.error % 1).toFixed(2).split('.')[1];
+
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header
@@ -18,7 +21,7 @@ const PredictOutput = ({ predictOutput, handleClose }) => {
         <Modal.Body className='text-center d-flex gap-4 flex-column'>
           <h5>Gradient Boost predicted your sale to be</h5>
           <h3>{data.data.data.toFixed(2)}</h3>
-          <small className='text-muted'>score: {data.data.error}</small>
+          <small className='text-muted'>Error: {error}%</small>
         </Modal.Body>
       ) : (
         <Modal.Body className='text-center d-flex gap-4 flex-column'>
